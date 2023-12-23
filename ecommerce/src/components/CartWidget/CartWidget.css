@@ -1,0 +1,10 @@
+.cart {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.numeroWidget {
+  margin-left: 10px;
+  display: inline-block;
+  vertical-align: middle;
+}

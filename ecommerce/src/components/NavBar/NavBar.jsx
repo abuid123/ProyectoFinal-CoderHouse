@@ -1,4 +1,4 @@
-import { CartWidget } from "./CartWidget";
+import { CartWidget } from "../CartWidget/CartWidget";
 
 export const NavBar = () => {
   return (
@@ -6,7 +6,7 @@ export const NavBar = () => {
       <div className="container mx-auto px-6 py-3">
         <div className="flex justify-between items-center">
           <div className="text-xl font-semibold text-white">
-            <CartWidget />
+            <CartWidget brandText="ECOMMERCE" />
           </div>
           <div className="flex items-center">
             <a className="text-xl font-semibold text-white" href="#">
