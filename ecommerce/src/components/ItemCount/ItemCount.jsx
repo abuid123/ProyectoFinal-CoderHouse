@@ -1,19 +1,8 @@
 /* eslint-disable react/prop-types */
-import { useState } from 'react';
+import { useItemCount } from "../../hooks/useItemCount";
 
 const ItemCount = ({ stock, initial, onAdd }) => {
-  const [quantity, setQuantity] = useState(initial);
-  const increment = () => {
-    if (quantity < stock) {
-      setQuantity(quantity + 1);
-    }
-  }
-
-  const decrement = () => {
-    if (quantity > 1) {
-      setQuantity(quantity - 1);
-    }
-  }
+  const { quantity, increment, decrement } = useItemCount(initial, stock)
 
   return (
     <div className="mx-auto w-[300px] p-[10px] shadow-md shadow-black rounded-lg mt-[80px]">
