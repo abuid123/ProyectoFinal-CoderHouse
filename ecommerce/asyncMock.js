@@ -20,7 +20,7 @@ export const getProducts = async () => {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(products)
-    }, 500)
+    }, 2000)
   })
 }
 
