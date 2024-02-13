@@ -3,9 +3,9 @@ import { useItemCount } from "../../hooks/useItemCount";
 
 const ItemCount = ({ stock, initial, onAdd }) => {
   const { quantity, increment, decrement } = useItemCount(initial, stock)
-
+  console.log(stock)
   return (
-    <div className="mx-auto w-[300px] p-[10px] shadow-md shadow-black rounded-lg mt-[80px]">
+    <div className="mx-auto w-[300px] p-[10px] shadow-md shadow-black rounded-lg mt-[50px] mb-8 ">
       <div className='flex flex-col items-center justify-center'>
         <h4 className="text-2xl text-center">{quantity}</h4>
         <div>
