@@ -66,10 +66,25 @@ const Cart = () => {
     addDoc(ordersCollection, newOrder)
       .then((docRef) => {
         console.log("Order written with ID: ", docRef.id);
+        toast.success(`Compra realizada con exito`, {
+          position: "bottom-left",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+        clearCart()
       })
       .catch((error) => {
         console.error("Error adding document: ", error);
       });
+  }
+
+  const clearCart = () => {
+    setCart([])
+    setTotalItems(0)
   }
 
   return (
