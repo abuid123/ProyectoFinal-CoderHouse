@@ -1,8 +1,25 @@
 /* eslint-disable react/prop-types */
 import ItemCount from '../ItemCount/ItemCount'
 import { Link } from 'react-router-dom';
-const ItemDetail = ({ name, price, category, image, stock, description }) => {
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useCartContext } from '../../context/cartContext';
+const ItemDetail = (item) => {
 
+  const { addItem } = useCartContext();
+  const { name, price, category, image, stock, description } = item;
+  const onAdd = (quantity) => {
+    addItem(item, quantity);
+    toast.success('Producto agregado al carrito', {
+      position: "bottom-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  }
   return (
     <article className='flex justify-center flex-col border-black border-solid border-2 rounded-2xl w-[50%] m-auto mt-20'>
       <Link to={'/'} type="button" className="flex items-start justify-center py-2 text-sm text-gray-700 transition-colors duration-200 bg-white border rounded-lg gap-x-2  dark:hover:bg-gray-800 dark:bg-gray-900 hover:bg-gray-100 dark:text-gray-200 dark:border-gray-700">
@@ -32,7 +49,8 @@ const ItemDetail = ({ name, price, category, image, stock, description }) => {
         </p>
       </section>
       <footer>
-        <ItemCount stock={stock} initial={1} onAdd={(quantity) => { console.log("Cantidad agregada:", quantity) }} />
+        <ItemCount stock={stock} initial={1} onAdd={onAdd} />
+        <ToastContainer />
       </footer>
     </article>
   )

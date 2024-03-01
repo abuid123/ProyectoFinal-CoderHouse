@@ -5,7 +5,11 @@ export default {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      gridTemplateRows: {
+        'cart': 'repeat(1, minmax(200px, 1fr))'
+      }
+    },
   },
   plugins: [],
 }

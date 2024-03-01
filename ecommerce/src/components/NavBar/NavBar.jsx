@@ -7,7 +7,9 @@ export const NavBar = () => {
     <nav className="bg-black">
       <div className="container mx-auto px-6 py-3">
         <div className="flex justify-between items-center w-full">
-          <CartWidget brandText="ECOMMERCE" />
+          <Link to={'/cart'}>
+            <CartWidget brandText="ECOMMERCE" />
+          </Link>
           <Link to={'/'} className="text-xl font-semibold text-white">
             <Logo img={logo} />
           </Link>
