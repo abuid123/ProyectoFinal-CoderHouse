@@ -5,7 +5,6 @@ const ItemCountSimple = ({ stock, initial, onAdd, onRest }) => {
   const { quantity, increment, decrement } = useItemCount(initial, stock)
 
   const handleChange = (e) => {
-    console.log(e)
     if (e.target.value <= stock) {
       onAdd(e.target.value)
     }

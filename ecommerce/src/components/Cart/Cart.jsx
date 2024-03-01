@@ -52,6 +52,10 @@ const Cart = () => {
     }
   }
 
+  const createOrder = () => {
+
+  }
+
   return (
     <>
       {cart.length === 0 ? <CartEmpty /> : null}
@@ -79,7 +83,7 @@ const Cart = () => {
             </div>
           )
         })}
-        {cart.length === 0 ? null : <button className='h-[100px] w-[250px] rounded-lg bg-sky-600 mx-auto'>Confirmar compra</button>}
+        {cart.length === 0 ? null : <button className='h-[100px] w-[250px] rounded-lg bg-sky-600 mx-auto' onClick={createOrder}>Confirmar compra</button>}
       </div >
       <ToastContainer />
     </>
