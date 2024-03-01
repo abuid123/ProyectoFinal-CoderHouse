@@ -4,6 +4,8 @@ import CartEmpty from '../CartEmpty/CartEmpty';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ItemCountSimple from '../ItemCountSimplified/ItemCountSimple';
+import { db } from '../../firebase/config';
+import { collection, addDoc } from 'firebase/firestore';
 const Cart = () => {
   const { cart, setCart, setTotalItems } = useCartContext();
 
@@ -53,7 +55,21 @@ const Cart = () => {
   }
 
   const createOrder = () => {
+    const order = {
+      items: cart.map(item => ({ id: item.item.id, title: item.item.name, price: item.item.price, quantity: item.quantity })),
+      total_price: cart.reduce((acc, item) => acc + item.item.price * item.quantity, 0),
+      order_date: new Date().toLocaleString()
+    }
+    const ordersCollection = collection(db, 'orders')
+    const newOrder = { ...order }
 
+    addDoc(ordersCollection, newOrder)
+      .then((docRef) => {
+        console.log("Order written with ID: ", docRef.id);
+      })
+      .catch((error) => {
+        console.error("Error adding document: ", error);
+      });
   }
 
   return (
