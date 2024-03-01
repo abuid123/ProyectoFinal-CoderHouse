@@ -55,6 +55,7 @@ const Cart = () => {
   }
 
   const createOrder = () => {
+    showSpinner()
     const order = {
       items: cart.map(item => ({ id: item.item.id, title: item.item.name, price: item.item.price, quantity: item.quantity })),
       total_price: cart.reduce((acc, item) => acc + item.item.price * item.quantity, 0),
@@ -79,12 +80,33 @@ const Cart = () => {
       })
       .catch((error) => {
         console.error("Error adding document: ", error);
+        toast.error(`Error al realizar la compra`, {
+          position: "bottom-left",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
       });
   }
 
   const clearCart = () => {
     setCart([])
     setTotalItems(0)
+  }
+
+  const showSpinner = () => {
+    toast.info(`Estamos procesando su compra`, {
+      position: "bottom-left",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   }
 
   return (
